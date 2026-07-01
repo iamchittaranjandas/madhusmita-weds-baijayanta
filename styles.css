@@ -1,0 +1,1307 @@
+/* ==========================================================================
+   DESIGN SYSTEM & CSS VARIABLES
+   ========================================================================== */
+:root {
+  --bg-pastel-yellow-start: #FFFDF5;
+  --bg-pastel-yellow-end: #FFF8E7;
+  --maroon-primary: #7A1C28;
+  --maroon-dark: #4A0E16;
+  --maroon-light: #B54D5B;
+  --maroon-fade: rgba(122, 28, 40, 0.08);
+  --gold-accent: #C5A059;
+  --gold-light: #F4E8C1;
+  --text-dark: #2C2520;
+  --text-muted: #5C5047;
+  
+  --font-serif: 'Marcellus', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', sans-serif;
+  
+  --border-card: 1px solid var(--maroon-primary);
+  --border-thin: 1px solid rgba(122, 28, 40, 0.2);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-pastel-yellow-start) 0%, var(--bg-pastel-yellow-end) 100%);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding: 2rem;
+}
+
+/* ==========================================================================
+   DECORATIVE CARD BORDER FRAME
+   ========================================================================== */
+.card-outer-border {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid var(--maroon-primary);
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.85;
+}
+
+.card-inner-border {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px dashed var(--gold-accent);
+}
+
+/* ==========================================================================
+   FLOATING MARIGOLDS CANVAS
+   ========================================================================== */
+.marigold-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.marigold-petal {
+  position: absolute;
+  background: radial-gradient(circle, #FFA500 0%, #FF6347 100%);
+  border-radius: 50% 0 50% 50%;
+  opacity: 0.6;
+  filter: drop-shadow(0 2px 4px rgba(255, 99, 71, 0.2));
+  animation: fall-and-sway linear infinite;
+}
+
+@keyframes fall-and-sway {
+  0% {
+    transform: translateY(-20px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(105vh) rotate(720deg) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   AUDIO FLOATING CONTROLLER
+   ========================================================================== */
+.audio-control-container {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  z-index: 101;
+}
+
+.audio-btn {
+  background: var(--bg-pastel-yellow-start);
+  border: 1px solid var(--maroon-primary);
+  border-radius: 30px;
+  color: var(--maroon-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(122, 28, 40, 0.1);
+  transition: var(--transition-smooth);
+}
+
+.audio-btn:hover {
+  background: var(--maroon-primary);
+  color: var(--bg-pastel-yellow-start);
+  box-shadow: 0 6px 20px rgba(122, 28, 40, 0.2);
+  transform: translateY(-2px);
+}
+
+.audio-btn.playing .music-icon-note {
+  animation: music-bounce 1s infinite alternate;
+}
+
+@keyframes music-bounce {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-3px) scale(1.1); }
+}
+
+/* ==========================================================================
+   AUSPICIOUS HEADER (PRAYERS & SLOKAS)
+   ========================================================================== */
+.header-auspicious {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+  z-index: 2;
+  position: relative;
+}
+
+.prayer-line {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--maroon-primary);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.sloka-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.sloka {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-muted);
+  width: 45%;
+  line-height: 1.8;
+  border-top: 1px solid rgba(122, 28, 40, 0.15);
+  padding-top: 0.8rem;
+}
+
+.sloka-left { text-align: left; }
+.sloka-right { text-align: right; }
+
+/* ==========================================================================
+   PORTAL MAIN LAYOUT
+   ========================================================================== */
+.portal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 5rem;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.svg-jagannath {
+  color: var(--maroon-primary);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(122, 28, 40, 0.15));
+  transition: var(--transition-smooth);
+}
+
+.svg-jagannath:hover {
+  transform: scale(1.05);
+  color: var(--maroon-dark);
+}
+
+.wedding-title-sub {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--maroon-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.15em;
+}
+
+.wedding-names {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  line-height: 1.1;
+  color: var(--maroon-primary);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weds-amp {
+  font-size: 2.2rem;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-accent);
+}
+
+.wedding-tagline {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.pani-grahana-container {
+  color: var(--maroon-primary);
+  margin: 1.5rem 0;
+  opacity: 0.9;
+}
+
+.scroll-prompt {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* ==========================================================================
+   COUNTDOWN TIMER SECTION
+   ========================================================================== */
+.section-countdown {
+  margin-bottom: 6rem;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--maroon-primary);
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: var(--maroon-primary);
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.countdown-card {
+  background: rgba(255, 253, 245, 0.6);
+  border: 1px solid var(--maroon-primary);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 10px rgba(122, 28, 40, 0.03);
+  backdrop-filter: blur(4px);
+  transition: var(--transition-smooth);
+}
+
+.countdown-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 10px 20px rgba(122, 28, 40, 0.08);
+}
+
+.countdown-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  color: var(--maroon-primary);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.countdown-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   THE COUPLE SECTION
+   ========================================================================== */
+.section-couple {
+  margin-bottom: 6rem;
+}
+
+.couple-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.couple-card {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--maroon-primary);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 16px;
+  position: relative;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.couple-card:hover {
+  transform: scale(1.02);
+  border-color: var(--gold-accent);
+  box-shadow: 0 10px 30px rgba(122, 28, 40, 0.06);
+}
+
+/* Subtle corner line decorations inside the couple cards */
+.card-decor-top, .card-decor-bottom {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  height: 1px;
+  background: var(--maroon-fade);
+}
+.card-decor-top { top: 15px; }
+.card-decor-bottom { bottom: 15px; }
+
+.couple-card-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-accent);
+  margin-bottom: 0.5rem;
+}
+
+.couple-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--maroon-primary);
+  margin-bottom: 1.5rem;
+}
+
+.couple-card-name .nickname {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.parents-info {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.parents-info strong {
+  color: var(--maroon-dark);
+}
+
+.couple-city {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  font-weight: 600;
+}
+
+.couple-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--maroon-primary);
+  padding: 1rem;
+}
+
+.svg-tablas {
+  filter: drop-shadow(0 2px 4px rgba(122, 28, 40, 0.1));
+}
+
+/* ==========================================================================
+   SACRED RITUALS SECTION
+   ========================================================================== */
+.section-rituals {
+  margin-bottom: 6rem;
+  text-align: center;
+}
+
+.rituals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ritual-card {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--maroon-primary);
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.ritual-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 12px 25px rgba(122, 28, 40, 0.05);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.ritual-svg-container {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  color: var(--maroon-primary);
+}
+
+.svg-ritual {
+  width: 100%;
+  height: 100%;
+  transition: var(--transition-smooth);
+}
+
+.ritual-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--maroon-primary);
+  line-height: 1.3;
+}
+
+.ritual-name .odia-name {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--gold-accent);
+  margin-top: 0.25rem;
+  font-weight: normal;
+}
+
+.ritual-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --- Ritual 1: Chita / Alpana Drawing --- */
+.svg-chita .chita-path {
+  fill: none;
+  stroke: var(--maroon-primary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: draw-chita-anim 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.svg-chita .chita-dot {
+  fill: var(--maroon-primary);
+  opacity: 0;
+  animation: fade-in-dots 1.5s ease-out 2.5s forwards;
+}
+
+@keyframes draw-chita-anim {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fade-in-dots {
+  to { opacity: 1; }
+}
+
+.ritual-card:hover .svg-chita .chita-path {
+  animation: none;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* --- Ritual 2: Hasta Ganthi Glow & Sparkle --- */
+.svg-hastaganthi .hand-path {
+  fill: none;
+  stroke: var(--maroon-primary);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-hastaganthi .bangle-path {
+  fill: none;
+  stroke: var(--gold-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.svg-hastaganthi .knot-thread {
+  fill: none;
+  stroke: var(--gold-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 2px rgba(197, 160, 89, 0.6));
+}
+
+.svg-hastaganthi .knot-flower-center {
+  fill: var(--maroon-primary);
+}
+
+.svg-hastaganthi .knot-flower-petal {
+  fill: var(--gold-accent);
+}
+
+.svg-hastaganthi .aura-circle {
+  fill: var(--gold-accent);
+  opacity: 0.12;
+  transform-origin: 60px 50px;
+  animation: pulse-aura 3s infinite ease-in-out;
+}
+
+@keyframes pulse-aura {
+  0%, 100% { transform: scale(0.9); opacity: 0.12; }
+  50% { transform: scale(1.15); opacity: 0.28; }
+}
+
+/* --- Ritual 3: Sata Ghera Orbit & Flicker --- */
+.svg-sataghera .orbit-path {
+  fill: none;
+  stroke: var(--maroon-primary);
+  stroke-width: 1;
+  stroke-dasharray: 4,4;
+  opacity: 0.25;
+}
+
+.svg-sataghera .fire-stand {
+  fill: var(--maroon-fade);
+  stroke: var(--maroon-primary);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.svg-sataghera .fire-log {
+  stroke: var(--text-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.svg-sataghera .fire-flame {
+  stroke: none;
+  transform-origin: 50px 64px;
+}
+
+.svg-sataghera .flame-1 {
+  fill: #FF5722;
+  animation: flicker-fire 1.8s infinite ease-in-out;
+}
+
+.svg-sataghera .flame-2 {
+  fill: #FF9800;
+  animation: flicker-fire 1.4s infinite ease-in-out 0.2s;
+}
+
+.svg-sataghera .flame-3 {
+  fill: #FFEB3B;
+  animation: flicker-fire 1.1s infinite ease-in-out 0.4s;
+}
+
+@keyframes flicker-fire {
+  0%, 100% { transform: scaleY(1) rotate(-1deg); }
+  50% { transform: scaleY(1.22) scaleX(0.92) rotate(1.5deg); }
+}
+
+.svg-sataghera .orbiting-couple {
+  transform-origin: 50px 55px;
+  animation: orbit-couple-anim 16s infinite linear;
+}
+
+.svg-sataghera .footprint {
+  fill: var(--maroon-primary);
+  opacity: 0.85;
+}
+
+@keyframes orbit-couple-anim {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Ritual 4: Kanya Bida Doli Sway --- */
+.svg-doli {
+  animation: sway-doli-anim 3.5s infinite ease-in-out;
+}
+
+.svg-doli .doli-pole {
+  stroke: var(--text-muted);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.svg-doli .doli-body {
+  fill: var(--maroon-fade);
+  stroke: var(--maroon-primary);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.svg-doli .doli-roof {
+  fill: var(--maroon-fade);
+  stroke: var(--maroon-primary);
+  stroke-width: 1.6;
+}
+
+.svg-doli .doli-decor {
+  fill: none;
+  stroke: var(--gold-accent);
+  stroke-width: 1.2;
+}
+
+.svg-doli .doli-decor-dot {
+  fill: var(--gold-accent);
+}
+
+.svg-doli .doli-window {
+  fill: var(--bg-pastel-yellow-start);
+  stroke: var(--maroon-primary);
+  stroke-width: 1;
+}
+
+.svg-doli .doli-curtain {
+  fill: var(--maroon-fade);
+  stroke: var(--maroon-light);
+  stroke-width: 1;
+}
+
+.svg-doli .doli-garland {
+  fill: none;
+  stroke: var(--gold-accent);
+  stroke-width: 1;
+  stroke-dasharray: 2,2;
+}
+
+@keyframes sway-doli-anim {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(0.8deg); }
+}
+
+/* ==========================================================================
+   EVENTS & VENUE SCHEDULE SECTION
+   ========================================================================== */
+.section-events {
+  margin-bottom: 6rem;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background: var(--bg-pastel-yellow-start);
+  border: 1px solid var(--maroon-primary);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 15px 35px rgba(122, 28, 40, 0.08);
+}
+
+.event-header-decor {
+  margin-bottom: 1.5rem;
+}
+
+.event-label-odia {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--maroon-primary);
+  background: var(--maroon-fade);
+  padding: 0.3rem 1.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(122, 28, 40, 0.15);
+}
+
+.event-name {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--maroon-primary);
+  margin-bottom: 1rem;
+}
+
+.event-time-date {
+  margin-bottom: 1.5rem;
+}
+
+.event-date {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.event-time {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.event-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--maroon-primary), transparent);
+  margin: 1.5rem 0;
+  opacity: 0.4;
+}
+
+.event-venue {
+  margin-bottom: 2rem;
+  min-height: 80px;
+}
+
+.event-venue strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--maroon-dark);
+  margin-bottom: 0.5rem;
+}
+
+.event-venue p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.event-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* BUTTON SYSTEMS */
+.btn {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-primary {
+  background: var(--maroon-primary);
+  color: var(--bg-pastel-yellow-start);
+  border: 1px solid var(--maroon-primary);
+}
+
+.btn-primary:hover {
+  background: var(--maroon-dark);
+  border-color: var(--maroon-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--maroon-primary);
+  border: 1px solid var(--maroon-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--maroon-fade);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   CULTURAL ELEMENTS & FLOATING GARLAND
+   ========================================================================== */
+.section-cultural-gallery {
+  text-align: center;
+  margin-bottom: 6rem;
+  padding: 0 1rem;
+}
+
+.garland-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  color: #FFA500; /* Traditional orange marigold outline */
+  max-width: 400px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.garland-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-accent), transparent);
+  border-top: 1px dashed #FFA500;
+  opacity: 0.6;
+}
+
+.marigold-flower-item {
+  color: #FFA500;
+  animation: spin-slow 20s infinite linear;
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.tradition-quote {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--maroon-primary);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+.tradition-quote .subtext {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/* ==========================================================================
+   RSVP & BLESSINGS WALL SECTION
+   ========================================================================== */
+.section-rsvp {
+  margin-bottom: 5rem;
+}
+
+.rsvp-layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.rsvp-form-container, .blessings-wall-container {
+  background: rgba(255, 253, 245, 0.4);
+  border: 1px solid var(--maroon-primary);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 15px rgba(122, 28, 40, 0.02);
+  backdrop-filter: blur(4px);
+}
+
+.form-title, .wall-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--maroon-primary);
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--maroon-fade);
+  padding-bottom: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input[type="text"], .form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(122, 28, 40, 0.3);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+}
+
+.form-group input[type="text"]:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--maroon-primary);
+  background: #FFF;
+  box-shadow: 0 0 0 3px var(--maroon-fade);
+}
+
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.radio-label input[type="radio"] {
+  accent-color: var(--maroon-primary);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* BLESSINGS WALL LIST DISPLAY */
+.blessings-wall {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Custom Scrollbar for the Blessings Wall */
+.blessings-wall::-webkit-scrollbar {
+  width: 4px;
+}
+
+.blessings-wall::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.blessings-wall::-webkit-scrollbar-thumb {
+  background-color: var(--maroon-fade);
+  border-radius: 4px;
+}
+
+.blessing-card-placeholder {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  padding: 2rem 0;
+}
+
+.blessing-card {
+  background: var(--bg-pastel-yellow-start);
+  border-left: 3px solid var(--gold-accent);
+  border-top: 1px solid rgba(122, 28, 40, 0.1);
+  border-right: 1px solid rgba(122, 28, 40, 0.1);
+  border-bottom: 1px solid rgba(122, 28, 40, 0.1);
+  border-radius: 0 10px 10px 0;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  animation: slide-in-card 0.5s ease-out forwards;
+}
+
+@keyframes slide-in-card {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blessing-text {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.blessing-author-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blessing-author {
+  font-weight: 600;
+  color: var(--maroon-primary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blessing-status-pill {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.blessing-status-pill.attending {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.blessing-status-pill.remote {
+  background-color: rgba(122, 28, 40, 0.08);
+  color: var(--maroon-primary);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer-main {
+  text-align: center;
+  padding: 3rem 0 1rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(122, 28, 40, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.footer-decor {
+  color: var(--maroon-primary);
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.svg-footer-pattern {
+  filter: drop-shadow(0 1px 2px rgba(122, 28, 40, 0.1));
+}
+
+.footer-names {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--maroon-primary);
+  margin-bottom: 0.25rem;
+}
+
+.footer-date {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.footer-compliments {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVENESS)
+   ========================================================================== */
+
+/* Up to Tablet (992px) */
+@media (max-width: 992px) {
+  body {
+    padding: 1.25rem;
+  }
+  
+  .card-outer-border {
+    top: 0.6rem;
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+  }
+  
+  .sloka-container {
+    padding: 0 1rem;
+  }
+
+  .couple-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+  }
+
+  .couple-divider {
+    transform: rotate(90deg);
+    margin: 1rem 0;
+  }
+  
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 500px;
+  }
+  
+  .rsvp-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .rituals-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .wedding-names {
+    font-size: 3rem;
+  }
+}
+
+/* Up to Mobile (600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 0.8rem;
+  }
+  
+  .card-outer-border {
+    top: 0.4rem;
+    left: 0.4rem;
+    right: 0.4rem;
+    bottom: 0.4rem;
+  }
+
+  .header-auspicious {
+    margin-bottom: 2rem;
+  }
+
+  .prayer-line {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+  .sloka-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sloka {
+    width: 100%;
+    text-align: center;
+  }
+
+  .wedding-names {
+    font-size: 2.2rem;
+  }
+
+  .weds-amp {
+    font-size: 1.6rem;
+  }
+  
+  .wedding-title-sub {
+    font-size: 1.4rem;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .countdown-num {
+    font-size: 2.2rem;
+  }
+
+  .couple-card, .event-card, .rsvp-form-container, .blessings-wall-container {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .event-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .audio-control-container {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .rituals-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .ritual-card {
+    padding: 2rem 1.25rem;
+  }
+}
