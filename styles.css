@@ -236,6 +236,23 @@ body {
   color: var(--maroon-dark);
 }
 
+.couple-photo-container {
+  margin: 0 auto 2rem;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--gold-accent);
+  box-shadow: 0 0 0 6px var(--gold-light), 0 8px 32px rgba(122, 28, 40, 0.18);
+}
+
+.couple-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .wedding-title-sub {
   font-family: var(--font-serif);
   font-size: 1.8rem;
