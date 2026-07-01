@@ -206,7 +206,7 @@ body {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
 }
 
 /* ==========================================================================
@@ -217,16 +217,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: auto;
   text-align: center;
-  padding: 2rem 0;
-  margin-bottom: 4rem;
+  padding: 1.5rem 0 2rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
 .svg-jagannath {
   color: var(--maroon-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   filter: drop-shadow(0 2px 4px rgba(122, 28, 40, 0.15));
   transition: var(--transition-smooth);
 }
@@ -237,9 +237,9 @@ body {
 }
 
 .couple-photo-container {
-  margin: 0 auto 2rem;
-  width: 260px;
-  height: 260px;
+  margin: 0 auto 1.2rem;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid var(--gold-accent);
@@ -255,23 +255,23 @@ body {
 
 .wedding-title-sub {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--maroon-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.15em;
 }
 
 .wedding-names {
   font-family: var(--font-serif);
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 1.1;
   color: var(--maroon-primary);
   font-weight: 400;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .weds-amp {
@@ -282,21 +282,21 @@ body {
 }
 
 .wedding-tagline {
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .pani-grahana-container {
   color: var(--maroon-primary);
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
   opacity: 0.9;
 }
 
 .scroll-prompt {
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -318,15 +318,15 @@ body {
    COUNTDOWN TIMER SECTION
    ========================================================================== */
 .section-countdown {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: var(--maroon-primary);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
   position: relative;
   display: inline-block;
   padding-bottom: 0.75rem;
@@ -387,7 +387,7 @@ body {
    THE COUPLE SECTION
    ========================================================================== */
 .section-couple {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 
 .couple-grid {
@@ -486,7 +486,7 @@ body {
    SACRED RITUALS SECTION
    ========================================================================== */
 .section-rituals {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
@@ -1290,6 +1290,11 @@ body {
   
   .countdown-num {
     font-size: 2.2rem;
+  }
+
+  .couple-photo-container {
+    width: 170px;
+    height: 170px;
   }
 
   .couple-card, .event-card, .rsvp-form-container, .blessings-wall-container {
